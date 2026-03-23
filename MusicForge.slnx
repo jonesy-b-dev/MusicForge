@@ -1,0 +1,5 @@
+<Solution>
+	<Project Path="MusicForge.Web/MusicForge.Web.csproj" />
+	<Project Path="MusicForge.BLL/MusicForge.BLL.csproj" />
+	<Project Path="MusicForge.DAL/MusicForge.DAL.csproj" />
+</Solution>
