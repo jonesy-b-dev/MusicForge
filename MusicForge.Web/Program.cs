@@ -1,4 +1,11 @@
+using MusicForge.BLL.Services;
+using MusicForge.DAL.Repositories;
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddScoped<UserRepository>();
+builder.Services.AddScoped<UserService>();
+
 
 // Add services to the container.
 builder.Services.AddRazorPages();

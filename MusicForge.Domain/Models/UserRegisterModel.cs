@@ -5,10 +5,17 @@ namespace MusicForge.Domain.Models
     public class UserRegisterModel
     {
 		[Required]
-		string UserName { get; set; }
+		public string FirstName { get; set; }
+
+		public string? LastName { get; set; }
+
 		[Required]
-		string Password { get; set; }
+		public string Email { get; set; }
+
 		[Required]
-		string PasswordRepeat { get; set; }
+		public string Password { get; set; }
+
+		[Required]
+		public string PasswordRepeat { get; set; }
     }
 }
