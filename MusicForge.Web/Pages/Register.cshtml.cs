@@ -30,6 +30,9 @@ public sealed class RegisterModel : PageModel
 		if (UserRegisterModel.Password != UserRegisterModel.PasswordRepeat)
 			return Page();
 
+		if (UserRegisterModel.LastName == null)
+			UserRegisterModel.LastName = string.Empty;
+
 		User newUser = new(
 			UserRegisterModel.FirstName,
 			UserRegisterModel.LastName,

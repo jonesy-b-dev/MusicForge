@@ -15,6 +15,7 @@ public class UserRepository
 		_connectionString = $"Server=mssqlstud.fhict.local;Database=dbi572325;User Id=dbi572325;Password={password};TrustServerCertificate=True;";
 
 	}
+
 	public void AddUser(User newUser)
 	{
 		string query = "";
