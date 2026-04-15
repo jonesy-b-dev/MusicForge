@@ -1,14 +1,15 @@
 ﻿using System;
 using MusicForge.DAL.Repositories;
+using MusicForge.Domain.Interfaces;
 using MusicForge.Domain.Models;
 
 namespace MusicForge.BLL.Services;
 
 public class UserService
 {
-	private readonly UserRepository _userRepository;
+	private readonly IUserRepository _userRepository;
 
-	public UserService(UserRepository userRepository)
+	public UserService(IUserRepository userRepository)
 	{
 		_userRepository = userRepository;
 	}

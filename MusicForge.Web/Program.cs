@@ -1,9 +1,10 @@
 using MusicForge.BLL.Services;
 using MusicForge.DAL.Repositories;
+using MusicForge.Domain.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddScoped<UserRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<UserService>();
 
 
