@@ -14,6 +14,10 @@ public class UserService
 		_userRepository = userRepository;
 	}
 
+	public void LoginUser(User user)
+	{
+
+	}
 	public void RegisterUser(User newUser)
 	{
 		_userRepository.AddUser(newUser);
