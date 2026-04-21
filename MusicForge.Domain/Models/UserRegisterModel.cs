@@ -9,13 +9,16 @@ namespace MusicForge.Domain.Models
 
 		public string? LastName { get; set; }
 
-		[Required]
+		[Required(ErrorMessage = "Please provide a valid email adress")]
+		[EmailAddress]
 		public string Email { get; set; }
 
-		[Required]
+		[Required(ErrorMessage = "Please provide a strong password")]
+		[DataType(DataType.Password)]
 		public string Password { get; set; }
 
-		[Required]
+		[Required(ErrorMessage = "Repeat Password must be the same as password")]
+		[DataType(DataType.Password)]
 		public string PasswordRepeat { get; set; }
     }
 }
