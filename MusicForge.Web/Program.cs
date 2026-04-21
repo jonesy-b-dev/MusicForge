@@ -1,11 +1,19 @@
 using MusicForge.BLL.Services;
 using MusicForge.DAL.Repositories;
 using MusicForge.Domain.Interfaces;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<UserService>();
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+	.AddCookie (options =>
+			{
+				options.LoginPath = new PathString("/Login");
+				options.AccessDeniedPath = new PathString("/AccessDenied");
+			});
+
 
 
 // Add services to the container.
@@ -25,6 +33,7 @@ app.UseHttpsRedirection();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapStaticAssets();

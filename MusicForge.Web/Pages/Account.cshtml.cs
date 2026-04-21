@@ -1,12 +1,14 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using MusicForge.Domain.Models;
 
-namespace MyApp.Namespace
+namespace MusicForge.Web.Pages;
+
+[Authorize(Roles = UserRoles.User)]
+public class AccountModel : PageModel
 {
-    public class AccountModel : PageModel
-    {
-        public void OnGet()
-        {
-        }
-    }
+	public void OnGet()
+	{
+	}
 }

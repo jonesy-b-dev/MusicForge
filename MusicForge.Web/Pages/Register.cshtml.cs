@@ -42,6 +42,6 @@ public sealed class RegisterModel : PageModel
 		);
 
 		_userService.RegisterUser(newUser);
-		return new RedirectToPageResult("/Privacy");
+		return new RedirectToPageResult("/Login");
 	}
 }
