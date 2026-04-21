@@ -1,3 +1,6 @@
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using MusicForge.BLL.Services;
@@ -22,6 +25,18 @@ public class LoginModel : PageModel
 
 	public async Task<IActionResult> OnPost()
 	{
-		return new RedirectToPageResult("/index");
+		if (!ModelState.IsValid)
+			return Page();
+
+		//Validate in database
+
+		List<Claim> claims = new();
+		claims.Add(new Claim(ClaimTypes.Email, UserLoginModel.Email));
+		claims.Add(new Claim(ClaimTypes.Role, UserRoles.User));
+
+		ClaimsIdentity claimIdentity = new(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+		HttpContext.SignInAsync(new ClaimsPrincipal(claimIdentity));
+
+		return new RedirectToPageResult("/Account");
 	}
 }
