@@ -44,4 +44,29 @@ public class UserRepository : IUserRepository
 		}
 
 	}
+
+	public bool ValidateUser(string email, string password)
+	{
+		string query = "";
+		try
+		{
+			using (SqlConnection connection = new(_connectionString))
+			{
+				query = "SELECT Email,Password FROM Users WHERE Email=@Email AND Password = @Password;";
+				SqlCommand command = new(query, connection);
+				command.Parameters.AddWithValue("@Email", email);
+				command.Parameters.AddWithValue("@Password", password);
+
+				connection.Open();
+				SqlDataReader reader = command.ExecuteReader();
+
+				return reader.HasRows;
+			}
+		}
+		catch (Exception e)
+		{
+			Console.WriteLine($"Failed to validate user.\n Query: {query}, Exeption: {e}");
+			return false;
+		}
+	}
 }

@@ -28,7 +28,8 @@ public class LoginModel : PageModel
 		if (!ModelState.IsValid)
 			return Page();
 
-		//Validate in database
+		if(!_userService.TryLoginUser(UserLoginModel.Email, UserLoginModel.Password))
+			return Page();
 
 		List<Claim> claims = new();
 		claims.Add(new Claim(ClaimTypes.Email, UserLoginModel.Email));

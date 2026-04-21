@@ -12,9 +12,9 @@ public class UserService
 		_userRepository = userRepository;
 	}
 
-	public void LoginUser(User user)
+	public bool TryLoginUser(string email, string password)
 	{
-
+		return _userRepository.ValidateUser(email, password);
 	}
 	public void RegisterUser(User newUser)
 	{
