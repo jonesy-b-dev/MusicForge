@@ -462,3 +462,9 @@ html {
 .form-group {
 	margin-bottom: 10px;
 }
+
+.navbar-link {
+	color: white;
+	text-decoration: none;
+	transition: color 0.3s ease;
+}
