@@ -12,6 +12,27 @@ body {
 }
 
 
+/* Login/register page*/
+.loginContainer {
+	width: 100%;
+	max-width: 40%;
+	background: linear-gradient(135deg, #FFF9E6 0%, white 100%);
+	border-radius: 0.75rem;
+	padding: 0.5rem;
+	box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+	border: 2px solid rgba(74, 93, 62, 0.1);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin: 100px auto;
+	padding: 50px;
+}
+
+.loginContainer form {
+	width: 100%;
+}
+
 /* Hero Section */
 .hero {
 	position: relative;
