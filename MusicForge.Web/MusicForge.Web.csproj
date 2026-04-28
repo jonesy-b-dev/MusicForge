@@ -2,6 +2,7 @@
   <ItemGroup>
     <ProjectReference Include="..\MusicForge.BLL\MusicForge.BLL.csproj" />
     <ProjectReference Include="..\MusicForge.DAL\MusicForge.DAL.csproj" />
+    <ProjectReference Include="..\MusicForge.Domain\MusicForge.Domain.csproj" />
   </ItemGroup>
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
