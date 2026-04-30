@@ -3,4 +3,5 @@
 	<Project Path="MusicForge.BLL/MusicForge.BLL.csproj" />
 	<Project Path="MusicForge.DAL/MusicForge.DAL.csproj" />
 	<Project Path="MusicForge.Domain/MusicForge.Domain.csproj" />
+	<Project Path="MusicForge.Testing/MusicForge.Testing.csproj" />
 </Solution>
