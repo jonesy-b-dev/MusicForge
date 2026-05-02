@@ -3,47 +3,48 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - MusicForge.Web</title>
+    <title>@ViewData["Title"] - MusicForge</title>
     <script type="importmap"></script>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/MusicForge.Web.styles.css" asp-append-version="true" />
 </head>
-<body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">MusicForge.Web</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+	    <nav class="navbar">
+        <div class="navbar-content">
+            <a href="/" class="navbar-brand">
+                <svg style="width: 1.5rem; height: 1.5rem; color: #F5B800;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
+                </svg>
+                <span class="navbar-brand-text">Audio<span class="navbar-accent">Forge</span></span>
+            </a>
+
+            <div class="navbar-menu">
+                <a asp-page="/Privacy" class="navbar-link">Articles</a>
+                <a asp-page="/tools/chord-builder" class="navbar-link">Chord Builder</a>
+                <a asp-page="/tools/scale-builder" class="navbar-link">Scale Builder</a>
+                <a asp-page="/tools/fretboard-learner" class="navbar-link">Fretboard Learner</a>
+                <button class="btn-login">
+                    <svg style="width: 1rem; height: 1rem;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
+                    </svg>
+						<a class="nav-link text-dark" asp-area="" asp-page="/Login">Login</a>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Login">Login</a>
-                        </li>
-                    </ul>
-                </div>
             </div>
-        </nav>
+        </div>
+    </nav>
     </header>
-    <div class="container">
+	<body>
+
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
-    </div>
 
     <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2026 - MusicForge.Web - <a asp-area="" asp-page="/Privacy">Privacy</a>
-        </div>
+		<div class="footer-bottom">
+			<p>&copy; 2026 AudioForge. All rights reserved.</p>
+		</div>
     </footer>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
