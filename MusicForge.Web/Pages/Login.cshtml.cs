@@ -28,8 +28,14 @@ public class LoginModel : PageModel
 		if (!ModelState.IsValid)
 			return Page();
 
-		if(!_userService.TryLoginUser(UserLoginModel.Email, UserLoginModel.Password))
+		Guid userGuid = _userService.TryLoginUser(UserLoginModel.Email, UserLoginModel.Password);
+
+		if(userGuid == Guid.Empty)
 			return Page();
+
+		Console.WriteLine(userGuid);
+		//_userService.GetUserById()
+
 
 		List<Claim> claims = new();
 		claims.Add(new Claim(ClaimTypes.Email, UserLoginModel.Email));
