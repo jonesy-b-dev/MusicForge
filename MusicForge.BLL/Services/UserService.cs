@@ -12,12 +12,17 @@ public class UserService
 		_userRepository = userRepository;
 	}
 
-	public bool TryLoginUser(string email, string password)
+	public Guid TryLoginUser(string email, string password)
 	{
 		return _userRepository.ValidateUser(email, password);
 	}
 	public void RegisterUser(User newUser)
 	{
 		_userRepository.AddUser(newUser);
+	}
+
+	public User GetUserById(Guid id)
+	{
+		return _userRepository.GetUserById(id);
 	}
 }
