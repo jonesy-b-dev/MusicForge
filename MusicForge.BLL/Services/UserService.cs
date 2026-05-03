@@ -21,5 +21,8 @@ public class UserService
 		_userRepository.AddUser(newUser);
 	}
 
-	//public User GetUser()
+	public User GetUserById(Guid id)
+	{
+		return _userRepository.GetUserById(id);
+	}
 }

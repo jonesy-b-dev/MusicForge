@@ -77,4 +77,40 @@ public class UserRepository : IUserRepository
 			return Guid.Empty;
 		}
 	}
+
+	public User GetUserById(Guid id)
+	{
+		string query = "";
+		User resultUser = new();
+		try
+		{
+			using (SqlConnection connection = new(_connectionString))
+			{
+				query = "SELECT FirstName, LastName, Email, Role FROM Users WHERE id= @userId;";
+				SqlCommand command = new(query, connection);
+				command.Parameters.AddWithValue("@userId", id);
+
+				connection.Open();
+				SqlDataReader reader = command.ExecuteReader();
+
+				while (reader.Read())
+				{
+					resultUser = new User(
+							(string)reader["FirstName"],
+							(string)reader["LastName"],
+							(string)reader["Email"],
+							string.Empty,
+							(string)reader["Role"]
+							);
+				}
+			}
+			return resultUser;
+		}
+		catch (Exception e)
+		{
+			Console.WriteLine($"Failed to Insert.\n Query: {query}, Student: {resultUser}, Exeption: {e}");
+			return null;
+		}
+
+	}
 }

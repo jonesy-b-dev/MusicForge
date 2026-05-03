@@ -6,4 +6,6 @@ public interface IUserRepository
 {
 	void AddUser(User newUser);
 	Guid ValidateUser(string email, string password);
+
+	User GetUserById(Guid id);
 }

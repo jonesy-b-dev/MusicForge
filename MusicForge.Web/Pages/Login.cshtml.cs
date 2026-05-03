@@ -33,13 +33,11 @@ public class LoginModel : PageModel
 		if(userGuid == Guid.Empty)
 			return Page();
 
-		Console.WriteLine(userGuid);
-		//_userService.GetUserById()
-
+		User loggedInUser = _userService.GetUserById(userGuid);
 
 		List<Claim> claims = new();
-		claims.Add(new Claim(ClaimTypes.Email, UserLoginModel.Email));
-		claims.Add(new Claim(ClaimTypes.Role, UserRoles.User));
+		claims.Add(new Claim(ClaimTypes.Email, loggedInUser.Email));
+		claims.Add(new Claim(ClaimTypes.Role, loggedInUser.Role));
 
 		ClaimsIdentity claimIdentity = new(claims, CookieAuthenticationDefaults.AuthenticationScheme);
 		HttpContext.SignInAsync(new ClaimsPrincipal(claimIdentity));
