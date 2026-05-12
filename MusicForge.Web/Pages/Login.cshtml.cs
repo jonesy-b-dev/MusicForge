@@ -28,12 +28,18 @@ public class LoginModel : PageModel
 		if (!ModelState.IsValid)
 			return Page();
 
-		if(!_userService.TryLoginUser(UserLoginModel.Email, UserLoginModel.Password))
+		Guid userGuid = _userService.TryLoginUser(UserLoginModel.Email, UserLoginModel.Password);
+
+		if(userGuid == Guid.Empty)
 			return Page();
 
+		User loggedInUser = _userService.GetUserById(userGuid);
+
+
 		List<Claim> claims = new();
-		claims.Add(new Claim(ClaimTypes.Email, UserLoginModel.Email));
-		claims.Add(new Claim(ClaimTypes.Role, UserRoles.User));
+		claims.Add(new Claim(ClaimTypes.Email, loggedInUser.Email));
+		claims.Add(new Claim(ClaimTypes.Role, loggedInUser.Role));
+		claims.Add(new Claim(ClaimTypes.NameIdentifier, userGuid.ToString()));
 
 		ClaimsIdentity claimIdentity = new(claims, CookieAuthenticationDefaults.AuthenticationScheme);
 		HttpContext.SignInAsync(new ClaimsPrincipal(claimIdentity));
