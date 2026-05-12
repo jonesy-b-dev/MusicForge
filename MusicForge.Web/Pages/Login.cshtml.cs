@@ -35,9 +35,11 @@ public class LoginModel : PageModel
 
 		User loggedInUser = _userService.GetUserById(userGuid);
 
+
 		List<Claim> claims = new();
 		claims.Add(new Claim(ClaimTypes.Email, loggedInUser.Email));
 		claims.Add(new Claim(ClaimTypes.Role, loggedInUser.Role));
+		claims.Add(new Claim(ClaimTypes.NameIdentifier, userGuid.ToString()));
 
 		ClaimsIdentity claimIdentity = new(claims, CookieAuthenticationDefaults.AuthenticationScheme);
 		HttpContext.SignInAsync(new ClaimsPrincipal(claimIdentity));
