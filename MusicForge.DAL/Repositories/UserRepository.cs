@@ -96,6 +96,7 @@ public class UserRepository : IUserRepository
 				while (reader.Read())
 				{
 					resultUser = new User(
+							id,
 							(string)reader["FirstName"],
 							(string)reader["LastName"],
 							(string)reader["Email"],
