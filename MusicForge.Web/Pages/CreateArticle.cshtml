@@ -22,6 +22,10 @@
     </div>
     <br />
     <button type="submit">Upload</button>
+	@if (TempData["Success"] != null)
+	{
+		<div class="success">@TempData["Success"]</div>
+	}
 </form>
 </div>
 

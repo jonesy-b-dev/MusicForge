@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using MusicForge.BLL.Services;
 using MusicForge.Domain.Models;
 
 namespace MusicForge.Web.Pages;
@@ -16,7 +17,12 @@ public class CreateArticle : PageModel
 
 	public string? FileContents { get; set; }
 	public string? ErrorMessage { get; set; }
+	readonly ArticleService _articleService;
 
+	public CreateArticle(ArticleService articleService)
+	{
+		_articleService = articleService;
+	}
 	public void OnGet() { }
 
 	public async Task<IActionResult> OnPostAsync()
@@ -30,10 +36,12 @@ public class CreateArticle : PageModel
 			return Page();
 		}
 
-		using var reader = new StreamReader(UploadedFile.OpenReadStream());
-		FileContents = await reader.ReadToEndAsync();
+		using var stream = UploadedFile.OpenReadStream();
+		_articleService.UploadArticle(Title, stream, UploadedFile.FileName);
 
-		//TODO: Send to BLL and upload to db in DAL
-		return Page();
+		TempData["Success"] = "Article uploaded successfully!";
+		return RedirectToPage();
 	}
 }
+
+
