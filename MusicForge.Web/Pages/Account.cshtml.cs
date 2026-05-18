@@ -6,7 +6,7 @@ using System.Security.Claims;
 
 namespace MusicForge.Web.Pages;
 
-[Authorize(Roles = UserRoles.User)]
+[Authorize(Roles = $"{UserRoles.User},{UserRoles.Writer},{UserRoles.Admin}")]
 public class AccountModel : PageModel
 {
 	private UserService _userService;
