@@ -5,7 +5,7 @@ using MusicForge.Domain.Models;
 
 namespace MusicForge.Web.Pages;
 
-[Authorize(Roles = UserRoles.User)]
+[Authorize(Roles = UserRoles.Writer)]
 public class CreateArticle : PageModel
 {
 	[BindProperty]
