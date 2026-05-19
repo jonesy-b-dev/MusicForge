@@ -11,17 +11,19 @@
 <hr>
 
 <form method="post" enctype="multipart/form-data">
-    <div>
+    <div class="form-group">
         <label for="Title">Title</label><br />
-        <input type="text" id="Title" name="Title" asp-for="Title" required />
+        <input type="text" class="form-control" id="Title" name="Title" asp-for="Title" required />
     </div>
     <br />
-    <div>
+    <div class="form-group">
         <label for="UploadedFile">Text File</label><br />
-        <input type="file" id="UploadedFile" name="UploadedFile" accept=".txt,.csv,.log,.md" />
+        <input type="file" class="upload-button" id="UploadedFile" name="UploadedFile" accept=".txt,.csv,.log,.md" />
     </div>
     <br />
-    <button type="submit">Upload</button>
+	<div style="display: flex; gap: 0.5rem;justify-content: center;">
+		<button type="submit" class="btn btn-primary mt-2 mb-2">Upload</button>
+	</div>
 	@if (TempData["Success"] != null)
 	{
 		<div class="success">@TempData["Success"]</div>

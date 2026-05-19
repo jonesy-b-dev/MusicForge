@@ -489,3 +489,24 @@ html {
 	text-decoration: none;
 	transition: color 0.3s ease;
 }
+
+/*.upload-button.input {
+/*	padding: 10px;
+/*	border: var(--bs-border-width) solid var(--bs-border-color);
+/*	background-color: #FFF9E6;
+*/
+/* Styles the clickable button part only */
+.upload-button::file-selector-button {
+	color: black;
+	border: none;
+	background-color: #F5B800;
+	padding: 6px 12px;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+/* Styles the "No file chosen" text area */
+.upload-button {
+	color: gray;
+	font-size: 14px;
+}
