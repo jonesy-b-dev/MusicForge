@@ -25,7 +25,7 @@ public class UserRepository : IUserRepository
 		{
 			using (SqlConnection connection = new(_connectionString))
 			{
-				query = "INSERT INTO Users VALUES (@FirstName, @LastName, @Email, @Password, @Role);";
+				query = "INSERT INTO Users VALUES (@FirstName, @LastName, @Email, @Password, @Role, @Id);";
 
 				SqlCommand command = new(query, connection);
 
@@ -34,6 +34,7 @@ public class UserRepository : IUserRepository
 				command.Parameters.AddWithValue("@Email", newUser.Email);
 				command.Parameters.AddWithValue("@Password", newUser.Password);
 				command.Parameters.AddWithValue("@Role", newUser.Role);
+				command.Parameters.AddWithValue("@Id", Guid.NewGuid());
 
 				connection.Open();
 				result = command.ExecuteNonQuery();
