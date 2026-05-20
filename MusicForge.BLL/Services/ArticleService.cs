@@ -13,19 +13,30 @@ namespace MusicForge.BLL.Services
 			_webRootPath = webRootPath;
 		}
 
-		public void UploadArticle(string title, Stream fileStream, string fileName)
+		public bool UploadArticle(string title, Stream fileStream, string fileName)
 		{
-			string dirPath = Path.Combine(_webRootPath, "articles");
-			Directory.CreateDirectory(dirPath);
-
-			string filePath = Path.Combine(dirPath, title + "_" + DateTime.Now.ToString("dd-MM-yyyy_HH-mm-ss") + Path.GetExtension(fileName));
-
-			using (FileStream fs = new FileStream(filePath, FileMode.Create))
+			string dirPath = string.Empty;
+			string filePath = string.Empty;
+			try
 			{
-				fileStream.CopyTo(fs);
-			}
+				dirPath = Path.Combine(_webRootPath, "articles");
+				Directory.CreateDirectory(dirPath);
 
-			//_articleRepository.AddArticle(article);
+				filePath = Path.Combine(dirPath, title + "_" + DateTime.Now.ToString("dd-MM-yyyy_HH-mm-ss") + Path.GetExtension(fileName));
+
+				using (FileStream fs = new FileStream(filePath, FileMode.Create))
+				{
+					fileStream.CopyTo(fs);
+				}
+
+				//_articleRepository.AddArticle(article);
+				return true;
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine($"Failed to store article in wwwwroot. Exception: {ex}, directory path = {dirPath}, file path = {filePath}");
+				return false;
+			}
 		}
 	}
 }
