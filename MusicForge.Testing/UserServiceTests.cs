@@ -40,4 +40,20 @@ public class UserServiceTests
 		Assert.Equal("User", result.Role);
 	}
 
+	[Fact]
+	public void GetUserById_WhenUserNotFound_ReturnsNull()
+	{
+		// Arrange
+		var mockRepo = new Mock<IUserRepository>();
+		mockRepo.Setup(r => r.GetUserById(It.IsAny<Guid>()))
+				.Returns((User)null); // simulate user not found
+
+		var service = new UserService(mockRepo.Object);
+
+		// Act
+		var result = service.GetUserById(Guid.NewGuid());
+
+		// Assert
+		Assert.Null(result);
+	}
 }
