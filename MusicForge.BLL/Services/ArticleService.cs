@@ -1,3 +1,4 @@
+using System.Security.Claims;
 using MusicForge.Domain.Interfaces;
 using MusicForge.Domain.Models;
 
@@ -8,24 +9,41 @@ namespace MusicForge.BLL.Services
 		readonly private IArticleRepository _articleRepository;
 
 		private readonly string _webRootPath;
-		public ArticleService(string webRootPath)
+		public ArticleService(string webRootPath, IArticleRepository articleRepository)
 		{
 			_webRootPath = webRootPath;
+			_articleRepository = articleRepository;
 		}
 
-		public void UploadArticle(string title, Stream fileStream, string fileName)
+		public bool UploadArticle(string title, Stream fileStream, string fileName, Guid userId)
 		{
-			string dirPath = Path.Combine(_webRootPath, "articles");
-			Directory.CreateDirectory(dirPath);
-
-			string filePath = Path.Combine(dirPath, title + "_" + DateTime.Now.ToString("dd-MM-yyyy_HH-mm-ss") + Path.GetExtension(fileName));
-
-			using (FileStream fs = new FileStream(filePath, FileMode.Create))
+			string dirPath = string.Empty;
+			string filePath = string.Empty;
+			try
 			{
-				fileStream.CopyTo(fs);
-			}
+				dirPath = Path.Combine(_webRootPath, "articles");
+				Directory.CreateDirectory(dirPath);
 
-			//_articleRepository.AddArticle(article);
+				string dateFormat = "dd-MM-yyyy_HH-mm-ss";
+				string date =  DateTime.Now.ToString(dateFormat);
+
+				filePath = Path.Combine(dirPath, title + "_" + date + Path.GetExtension(fileName));
+
+				using (FileStream fs = new FileStream(filePath, FileMode.Create))
+				{
+					fileStream.CopyTo(fs);
+				}
+
+				Article uploadedArticle = new Article(Guid.NewGuid(), userId, title, filePath, 0, DateTime.ParseExact(date, dateFormat, System.Globalization.CultureInfo.InvariantCulture));
+
+				_articleRepository.AddArticle(uploadedArticle);
+				return true;
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine($"Failed to upload article in. Exception: {ex}, directory path = {dirPath}, file path = {filePath}");
+				return false;
+			}
 		}
 	}
 }

@@ -11,11 +11,13 @@ builder.Services.AddScoped<UserService>();
 builder.Services.AddScoped<ArticleService>(sp =>
 		{
 			var env = sp.GetRequiredService<IWebHostEnvironment>();
-			return new ArticleService(env.WebRootPath);
+			var articleRepo = sp.GetRequiredService<IArticleRepository>();
+
+			return new ArticleService(env.WebRootPath, articleRepo);
 		});
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-	.AddCookie (options =>
+	.AddCookie(options =>
 			{
 				options.LoginPath = new PathString("/Login");
 				options.AccessDeniedPath = new PathString("/AccessDenied");
@@ -31,9 +33,9 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
-    app.UseExceptionHandler("/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-    app.UseHsts();
+	app.UseExceptionHandler("/Error");
+	// The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+	app.UseHsts();
 }
 
 app.UseHttpsRedirection();

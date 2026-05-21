@@ -1,3 +1,4 @@
+using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -37,9 +38,15 @@ public class CreateArticle : PageModel
 		}
 
 		using var stream = UploadedFile.OpenReadStream();
-		_articleService.UploadArticle(Title, stream, UploadedFile.FileName);
 
+
+		if (!_articleService.UploadArticle(Title, stream, UploadedFile.FileName, Guid.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value)))
+		{
+			TempData["Failed"] = "Article upload to database was not successfull please try again";
+			return RedirectToPage();
+		}
 		TempData["Success"] = "Article uploaded successfully!";
+
 		return RedirectToPage();
 	}
 }
