@@ -1,0 +1,83 @@
+Lo1 - Solo analyzing
+Iteration 1
+This phase I learned a lot about analyzing. Most of this iteration was spend on it. I learned how to analyse problems by creating a inital project idea, one slide idea, project plan and URS document all focusing on analysing the problem I though of in the initial project idea. Using feedback of multible teachers I was able to get really solid documents that I am actually really happy about. Compared to last semester when I felt really unknown at the analysing part I feel quite confident in this department.  
+
+I think I will be beginning for this learning outcome becuase I spend and improved a lot on this Lo, I don't want to get too big on myself and say I'm proficient, because there is for suer room for improvement. I haven't gotten much feedback on the URS so far and I think when it comes to seperating out the different sections of a project plan, and beign clear in all the paragraphs is still something I can improve on.
+
+----
+Lo2 - Solo Designing
+Iteration 1
+I havn't gotten too much done for this Lo, this is more something I will do next iteration. For the solo project I havn't collected any evidence for it.
+
+Though I do think I will be orienting for this Lo3, I did collect some evidence for designing in the workshop collection. I showed that I do understand what needs to be done for this Lo2 and what I can do for this Lo2, I just havn't put it into practice yet.
+
+----
+Lo3 - Solo Implementation
+Iteration 1
+For the solo project itself I havent added anything yet, only in the workshops collection.
+
+Because of that I think I am orienting on this Lo, I was thinking giving myself beginning but considering I havent put anything to practise in the 2 projects itself orientation is more fitting. There is still a lot of time left.
+
+----
+Lo4 - Solo - Managing
+Iteration 1
+I did a few things for this Lo already this semester. But just the simple starting things. Learning how to use Jira has been okay so far, its a complex tool and i dont know if I like all that much so far. The Git has only been setup and not used yet. 
+
+I think I am orienting for this one, I did show what the learning outcomes means but haven't done that much on it. Still a lot to work to do here.
+
+----
+Lo5 - Solo - Professional standard
+Iteration 1
+For this Lo I did have 2 items for my solo project so far which are teh github and a small research I did. Next iteration I expect there will be a lot more evidence for this Lo. Though it's going well with understanding the learning outcome.
+
+I think I am orienting for this outcome, theres a lot to do for this learning outcome. I do understand the learning outcome but not too much done for it yet.
+
+----
+Lo6 - Solo - Personal leadership
+Iteration 1
+This learning outcome I still find quite challeging in the solo project I only have the feedpulses here. For the other collections I do have some more. Next iteration I will have for sure some more evidence here.
+
+I do think I am together with the evidence in the other collections I am orienting for this learning outcome. I did show few different types of evidence showing I understand the learning outcome. 
+
+Lo1 - Group
+We did a lot of analyzing this iteration we created the whole project plan and URS document this iteration. I learned a lot about analyzing this iteration by creatign these docuemtns and feel a lot more confident. In the group project plan I did the risk analysis and testing strategy and learned a lot on those topics how you represent it in a project plan. 
+
+I think I will be beginning for this learning outcome becuase I spend and improved a lot on this Lo, I don't want to get too big on myself and say I'm proficient, because there is for suer room for improvement. I haven't gotten much feedback on the URS so far and I think when it comes to seperating out the different sections of a project plan, and beign clear in all the paragraphs is still something I can improve on.
+
+---
+Lo2 - Group
+We didnt really do any designign this iteration yet, it was mostly analysing. I did create the usecase dia, next ieteration we will do a whole lot more designing.
+
+Though I do think I will be orienting for this Lo3, I did collect some evidence for designing in the workshop collection. I showed that I do understand what needs to be done for this Lo2 and what I can do for this Lo2, I just havn't put it into practice yet.
+
+---
+Lo3 - Group
+We didnt do any implementation yet in this iteration. This will start next semester.
+
+Though I do I think I am orienting on this Lo, I was thinking giving myself beginning but considering I havent put anything to practise in the 2 projects itself orientation is more fitting. There is still a lot of time left.
+
+---
+Lo4 - Group
+Iteration 1
+We did a few things for this Lo so far, we created a jira board and a git repository to manage out team. I think we can gut soem feedback from teachers on what we can do for this learing outocme to improve on this learning outcome.
+
+I think I am orienting for this one, I did show what the learning outcomes means but haven't done that much on it. Still a lot to work to do here.
+
+---
+Lo5 - Group
+Iteration 1
+I have a few pieces of evidence here now the contract was a big thing for our group, we all agreed on a bunch of roles for our team to ensure proper workflow through the semester. This si for sure something I would do again. We also setup a Jira board for the team to ensure smooth workflow. Its still a complex program to learn but we are getting already quite smooth with it. Theres still a lot to learn tho.
+
+I think I am orienting for this outcome, theres a lot to do for this learning outcome. I do understand the learning outcome but not too much done for it yet.
+Lo6 - Group
+
+Lo1 - Workshop
+Lo2 - Workshop
+Lo3 - Workshop
+Iteration 1
+This iteration I did quite some bits and bops for this Lo, we had a whole bunch of workshops on the programming concepts we will be using this semester. I did most of those exercices with ease. I got quite some OOP experience already. It was still fun to learn about these concepts and I already feel confident with the concepts we dicussed in class so far. 
+
+I do I think I am orienting on this Lo, I was thinking giving myself beginning but considering I havent put anything to practise in the 2 projects itself orientation is more fitting. There is still a lot of time left.
+Lo4 - Workshop
+Lo5 - Workshop
+Lo6 - Workshop
