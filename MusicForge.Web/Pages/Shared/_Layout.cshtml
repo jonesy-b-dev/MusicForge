@@ -21,16 +21,37 @@
             </a>
 
             <div class="navbar-menu">
-                <a asp-page="/Privacy" class="navbar-link">Articles</a>
+                <a asp-page="/ArticleBrowser" class="navbar-link">Articles</a>
                 <a asp-page="/tools/chord-builder" class="navbar-link">Chord Builder</a>
                 <a asp-page="/tools/scale-builder" class="navbar-link">Scale Builder</a>
                 <a asp-page="/tools/fretboard-learner" class="navbar-link">Fretboard Learner</a>
-                <button class="btn-login">
-                    <svg style="width: 1rem; height: 1rem;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
-                    </svg>
+
+				@if (User.Identity.IsAuthenticated)
+				{
+					<button class="btn-login">
+						<svg style="width: 1rem; height: 1rem;" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 640 640" fill="currentColor" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="32"
+								  d="M320 312C386.3 312 440 258.3 440 192C440 125.7 386.3 72 320 72C253.7 72 200 125.7 200 192C200 258.3 253.7 312 320 312zM290.3 368C191.8 368 112 447.8 112 546.3C112 562.7 125.3 576 141.7 576L498.3 576C514.7 576 528 562.7 528 546.3C528 447.8 448.2 368 349.7 368L290.3 368z"/>
+						</svg>
+						<a class="nav-link text-dark" asp-area="" asp-page="/Account">Account</a>
+					</button>
+					<button class="btn-login">
+						<svg style="width: 1rem; height: 1rem;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+						</svg>
+						<a class="nav-link text-dark" asp-area="" asp-page="/Logout">Logout</a>
+					</button>
+				}
+				else
+				{
+					<button class="btn-login">
+						<svg style="width: 1rem; height: 1rem;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
+						</svg>
 						<a class="nav-link text-dark" asp-area="" asp-page="/Login">Login</a>
-                </button>
+					</button>
+				}
+</div>
             </div>
         </div>
     </nav>

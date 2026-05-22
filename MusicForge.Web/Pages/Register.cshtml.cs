@@ -34,6 +34,7 @@ public sealed class RegisterModel : PageModel
 			UserRegisterModel.LastName = string.Empty;
 
 		User newUser = new(
+			Guid.Empty,
 			UserRegisterModel.FirstName,
 			UserRegisterModel.LastName,
 			UserRegisterModel.Email,
