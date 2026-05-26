@@ -17,7 +17,8 @@ namespace MusicForge.Domain.Models
 		[DataType(DataType.Password)]
 		public string Password { get; set; }
 
-		[Required(ErrorMessage = "Repeat Password must be the same as password")]
+		[Required(ErrorMessage = "Please repeat you password")]
+		[Compare("Password", ErrorMessage = "Repeat Password must be the same as password")]
 		[DataType(DataType.Password)]
 		public string PasswordRepeat { get; set; }
     }
