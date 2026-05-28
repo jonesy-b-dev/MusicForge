@@ -40,7 +40,8 @@ public class CreateArticle : PageModel
 		using var stream = UploadedFile.OpenReadStream();
 
 
-		if (!_articleService.UploadArticle(Title, stream, UploadedFile.FileName, Guid.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value)))
+		if (!_articleService.UploadArticle(Title, stream, UploadedFile.FileName, Guid.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value
+						?? throw new InvalidOperationException("User identifier claim is missing on Account page load"))))
 		{
 			TempData["Failed"] = "Article upload to database was not successfull please try again";
 			return RedirectToPage();
