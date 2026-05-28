@@ -18,11 +18,11 @@ namespace MusicForge.Domain.Models
 			Upvotes = upvotes;
 			CreationDate = creationDate;
 		}
-		public Guid Id { get; set; }
-		public Guid UserId { get; set; }
-		public string Title { get; set; }
-		public string Path { get; set; }
-		public int Upvotes { get; set; }
-		public DateTime CreationDate { get; set; }
+		public Guid Id { get; }
+		public Guid UserId { get; }
+		public string Title { get; }
+		public string Path { get; }
+		public int Upvotes { get; }
+		public DateTime CreationDate { get; }
 	}
 }
