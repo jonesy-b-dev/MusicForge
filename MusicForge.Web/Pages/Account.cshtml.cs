@@ -17,7 +17,8 @@ public class AccountModel : PageModel
 	}
 	public void OnGet()
 	{
-		Guid guid = Guid.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+		Guid guid = Guid.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value
+				?? throw new InvalidOperationException("User identifier claim is missing on Account page load"));
 		loggedInUser = _userService.GetUserById(guid);
 	}
 }

@@ -17,10 +17,7 @@ public sealed class RegisterModel : PageModel
 		_userService = userService;
 	}
 
-	public void OnGet()
-	{
-		UserRegisterModel = new();
-	}
+	public void OnGet() {}
 
 	public async Task<IActionResult> OnPost()
 	{

@@ -21,11 +21,11 @@ namespace MusicForge.Domain.Models
 
 		public User() { }
 
-		public Guid Id { get; private set; }
-		public string? FirstName { get; private set; }
-		public string? LastName { get; private set; }
-		public string? Email { get; private set; }
-		public string? Password { get; private set; }
+		public Guid Id { get; }
+		public string? FirstName { get; }
+		public string? LastName { get; }
+		public string? Email { get; }
+		public string? Password { get; }
 		public string? Role { get; set; }
 	}
 }
