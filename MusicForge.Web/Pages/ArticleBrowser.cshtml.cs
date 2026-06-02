@@ -1,40 +1,39 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using MusicForge.BLL.Services;
 using MusicForge.Domain.Models;
 
 namespace MusicForge.Web.Pages
 {
     public class ArticleBrowserModel : PageModel
     {
-		public List<Article> mockArticles = [
-			new Article(Guid.NewGuid(),
-					Guid.NewGuid(),
-					"Article1",
-					"path/to/article",
-					-12,
-					DateTime.Now),
-			new Article(Guid.NewGuid(),
-					Guid.NewGuid(),
-					"Article2",
-					"path/to/article",
-					15,
-					DateTime.Now),
-			new Article(Guid.NewGuid(),
-					Guid.NewGuid(),
-					"Article3",
-					"path/to/article",
-					16,
-					DateTime.Now),
-			new Article(Guid.NewGuid(),
-					Guid.NewGuid(),
-					"Article4",
-					"path/to/article",
-					12,
-					DateTime.Now),
-		];
+		public List<Article> _allArticles = new();
+		private UserService _userService;
+		private ArticleService _articleService;
+
+		public ArticleBrowserModel(UserService userService, ArticleService articleService)
+		{
+			_userService = userService;
+			_articleService = articleService;
+		}
 
         public void OnGet()
         {
+			_allArticles = _articleService.GetAllArticles();
         }
+
+		public string GetArticleAuthorName(Article article)
+		{
+			User articleAuthor = _userService.GetUserById(article.UserId);
+			if(articleAuthor != null)
+			{
+				return articleAuthor.FirstName + " " + articleAuthor.LastName;
+			}
+			else
+			{
+				return "Error fetching name";
+			}
+
+		}
     }
 }
