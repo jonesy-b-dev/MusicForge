@@ -41,5 +41,41 @@ namespace MusicForge.DAL.Repositories
 				Console.WriteLine($"Failed to Insert.\n Query: {query}, Result: {result}\n Exeption: {e}");
 			}
 		}
+
+		public List<Article> GetAllArticles()
+		{
+			string query = "";
+			List<Article> articles = new();
+			try
+			{
+				using (SqlConnection connection = new(_connectionString))
+				{
+					query = "SELECT * FROM Articles;";
+					SqlCommand command = new(query, connection);
+					connection.Open();
+					using (SqlDataReader reader = command.ExecuteReader())
+					{
+						while (reader.Read())
+						{
+							articles.Add(new Article(
+									(Guid)reader["id"],
+									(Guid)reader["user_id"],
+									(string)reader["title"],
+									(string)reader["filePath"],
+									(int)reader["upvotes"],
+									(DateTime)reader["created_at"]
+								)
+							);
+						}
+					}
+				}
+			}
+			catch (Exception e)
+			{
+				Console.WriteLine($"Failed to Retrieve.\n Query: {query}\n Exception: {e}");
+				return new();
+			}
+			return articles;
+		}
 	}
 }
