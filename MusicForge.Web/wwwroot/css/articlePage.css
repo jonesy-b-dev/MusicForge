@@ -204,7 +204,7 @@ body {
 /* ARTICLES GRID */
 .articles-container {
 	max-width: 1200px;
-	margin: 0 auto;
+	margin: 20px auto;
 	padding: 0 1.5rem 4rem;
 }
 
