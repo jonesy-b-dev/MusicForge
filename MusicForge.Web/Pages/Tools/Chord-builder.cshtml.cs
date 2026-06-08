@@ -9,6 +9,9 @@ namespace MusicForge.Web.Pages.Tools
 	{
 		[BindProperty]
 		public Note SelectedNote { get; set; }
+
+		[BindProperty]
+		public ChordMode SelectedMode { get; set; }
 		public string result = "";
 		public NoteCollection chord = new();
 
@@ -20,12 +23,13 @@ namespace MusicForge.Web.Pages.Tools
 		public void OnGet()
 		{
 			SelectedNote = Note.C;
-			chord = _chordCalulatorService.CalculateChord(SelectedNote, ChordMode.MajorTriad);
+			SelectedMode = ChordMode.MajorTriad;
+			chord = _chordCalulatorService.CalculateChord(SelectedNote, SelectedMode);
 		}
 
 		public void OnPost()
 		{
-			chord = _chordCalulatorService.CalculateChord(SelectedNote, ChordMode.MajorTriad);
+			chord = _chordCalulatorService.CalculateChord(SelectedNote, SelectedMode);
 		}
 
 	}
