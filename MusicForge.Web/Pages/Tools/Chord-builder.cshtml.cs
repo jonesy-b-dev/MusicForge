@@ -1,12 +1,32 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using MusicForge.BLL.Services;
+using MusicForge.Domain.Models;
 
-namespace MusicForge.Web.Pages
+namespace MusicForge.Web.Pages.Tools
 {
-    public class ChordBuilderModel : PageModel
-    {
-        public void OnGet()
-        {
-        }
-    }
+	public class ChordBuilderModel : PageModel
+	{
+		[BindProperty]
+		public Note SelectedNote { get; set; }
+		public string result = "";
+		public NoteCollection chord = new();
+
+		readonly ChordCalculatorService _chordCalulatorService;
+		public ChordBuilderModel(ChordCalculatorService chordCalulatorService)
+		{
+			_chordCalulatorService = chordCalulatorService;
+		}
+		public void OnGet()
+		{
+			SelectedNote = Note.C;
+			chord = _chordCalulatorService.CalculateChord(SelectedNote, ChordMode.MajorTriad);
+		}
+
+		public void OnPost()
+		{
+			chord = _chordCalulatorService.CalculateChord(SelectedNote, ChordMode.MajorTriad);
+		}
+
+	}
 }

@@ -1,5 +1,28 @@
 ﻿@page
-@model MusicForge.Web.Pages.ChordBuilderModel
-@{
+@using MusicForge.Domain.Models
+@model MusicForge.Web.Pages.Tools.ChordBuilderModel
+
+<form method="post">
+	<select asp-for="SelectedNote">
+		<option value="A">A</option>
+		<option value="As">A#</option>
+		<option value="B">B</option>
+		<option value="C">C</option>
+		<option value="Cs">C#</option>
+		<option value="D">D</option>
+		<option value="Ds">D#</option>
+		<option value="E">E</option>
+		<option value="F">F</option>
+		<option value="Fs">F#</option>
+		<option value="G">G</option>
+		<option value="Gs">G#</option>
+	</select>
+	<button type="submit">Submit</button>
+</form>
+
+@foreach (Note note in Model.chord.notes)
+{
+	string result = note.ToString().Replace("s", "#");
+	<div>@result</div>
 }
-Chord tool
+
