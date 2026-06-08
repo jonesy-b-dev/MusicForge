@@ -45,5 +45,10 @@ namespace MusicForge.BLL.Services
 				return false;
 			}
 		}
+
+		public List<Article> GetAllArticles()
+		{
+			return _articleRepository.GetAllArticles();
+		}
 	}
 }

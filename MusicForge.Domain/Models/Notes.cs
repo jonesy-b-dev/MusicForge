@@ -1,0 +1,18 @@
+namespace MusicForge.Domain.Models
+{
+	public enum Note
+	{
+		A,
+		As,
+		B,
+		C,
+		Cs,
+		D,
+		Ds,
+		E,
+		F,
+		Fs,
+		G,
+		Gs,
+	}
+}
