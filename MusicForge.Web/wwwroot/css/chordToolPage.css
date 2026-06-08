@@ -297,10 +297,6 @@
 }
 
 @media (max-width: 480px) {
-	.navbar-link {
-		display: none;
-	}
-
 	.page-title {
 		font-size: 1.75rem;
 	}

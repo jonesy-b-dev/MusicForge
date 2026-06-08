@@ -1,13 +1,4 @@
-/* AudioForge Articles Page CSS */
 /* Colors: amber #F5B800, forest green #4A5D3E, cream #FFF9E6, red #D4183D */
-
-*,
-*::before,
-*::after {
-	box-sizing: border-box;
-	margin: 0;
-	padding: 0;
-}
 
 .btn-login {
 	display: flex;
@@ -328,13 +319,5 @@
 
 	.search-wrapper {
 		max-width: 100%;
-	}
-
-	.navbar-menu {
-		gap: 0.75rem;
-	}
-
-	.navbar-link {
-		font-size: 0.8rem;
 	}
 }
