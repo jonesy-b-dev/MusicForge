@@ -8,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IArticleRepository, ArticleRepostiry>();
 builder.Services.AddScoped<UserService>();
+builder.Services.AddScoped<ChordCalculatorService>();
 builder.Services.AddScoped<ArticleService>(sp =>
 		{
 			var env = sp.GetRequiredService<IWebHostEnvironment>();
