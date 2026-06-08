@@ -296,16 +296,6 @@
 	background-color: #E8E4D4;
 }
 
-/* FOOTER */
-.footer {
-	background-color: #F5B800;
-	border-top: 4px solid #4A5D3E;
-	padding: 2rem 1.5rem;
-	text-align: center;
-	color: #2A3D2E;
-	font-size: 0.9rem;
-}
-
 /* RESPONSIVE */
 @media (max-width: 640px) {
 	.page-header h1 {
