@@ -1,13 +1,4 @@
-/* AudioForge Articles Page CSS */
 /* Colors: amber #F5B800, forest green #4A5D3E, cream #FFF9E6, red #D4183D */
-
-*,
-*::before,
-*::after {
-	box-sizing: border-box;
-	margin: 0;
-	padding: 0;
-}
 
 .btn-login {
 	display: flex;
@@ -26,30 +17,6 @@
 
 .btn-login:hover {
 	opacity: 0.88;
-}
-
-/* PAGE HEADER */
-.page-header {
-	background-color: #F5B800;
-	border-bottom: 4px solid #4A5D3E;
-	padding: 2rem 1.5rem;
-}
-
-.page-header-content {
-	max-width: 1200px;
-	margin: 0 auto;
-}
-
-.page-header h1 {
-	font-size: 2.5rem;
-	font-weight: 900;
-	color: #4A5D3E;
-	margin-bottom: 0.5rem;
-}
-
-.page-header p {
-	color: #2A3D2E;
-	font-size: 1.1rem;
 }
 
 /* CONTROLS */
@@ -305,16 +272,6 @@
 	background-color: #E8E4D4;
 }
 
-/* FOOTER */
-.footer {
-	background-color: #F5B800;
-	border-top: 4px solid #4A5D3E;
-	padding: 2rem 1.5rem;
-	text-align: center;
-	color: #2A3D2E;
-	font-size: 0.9rem;
-}
-
 /* RESPONSIVE */
 @media (max-width: 640px) {
 	.page-header h1 {
@@ -328,13 +285,5 @@
 
 	.search-wrapper {
 		max-width: 100%;
-	}
-
-	.navbar-menu {
-		gap: 0.75rem;
-	}
-
-	.navbar-link {
-		font-size: 0.8rem;
 	}
 }

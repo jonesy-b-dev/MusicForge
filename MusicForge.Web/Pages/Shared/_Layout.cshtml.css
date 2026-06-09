@@ -56,6 +56,12 @@
 	color: #F5B800;
 }
 
+.navbar-link {
+	color: white;
+	text-decoration: none;
+	transition: color 0.3s ease;
+}
+
 .btn-login {
 	display: inline-flex;
 	align-items: center;
@@ -72,4 +78,72 @@
 
 .btn-login:hover {
 	background-color: #e5a800;
+}
+
+/* Footer */
+.footer {
+	background-color: #4A5D3E;
+	color: white;
+	padding: 3rem 1rem;
+}
+
+.footer-content {
+	max-width: 1280px;
+	margin: 0 auto;
+}
+
+.footer-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+	gap: 2rem;
+	margin-bottom: 3rem;
+}
+
+.footer-brand {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	margin-bottom: 1rem;
+	font-size: 1.25rem;
+	font-weight: bold;
+}
+
+.footer-brand .accent {
+	color: #F5B800;
+}
+
+.footer-description {
+	color: #d1d5db;
+}
+
+.footer-heading {
+	font-weight: bold;
+	margin-bottom: 1rem;
+	color: #F5B800;
+}
+
+.footer-links {
+	list-style: none;
+}
+
+.footer-links li {
+	margin-bottom: 0.5rem;
+}
+
+.footer-links a {
+	color: #d1d5db;
+	text-decoration: none;
+	transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+	color: #F5B800;
+}
+
+.footer-bottom {
+	margin-top: 3rem;
+	padding-top: 2rem;
+	border-top: 1px solid rgba(255, 255, 255, 0.1);
+	text-align: center;
+	color: #9ca3af;
 }
