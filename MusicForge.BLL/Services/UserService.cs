@@ -14,15 +14,37 @@ public class UserService
 
 	public Guid TryLoginUser(string email, string password)
 	{
+		if (Equals(email, string.Empty) || email == null)
+			return Guid.Empty;
+
+		if (Equals(password, string.Empty) || password == null)
+			return Guid.Empty;
+
 		return _userRepository.ValidateUser(email, password);
 	}
-	public void RegisterUser(User newUser)
+	public bool RegisterUser(User newUser)
 	{
+		if (newUser == null)
+			return false;
+		if (Equals(newUser.FirstName, string.Empty) || newUser.FirstName == null)
+			return false;
+		if (Equals(newUser.Email, string.Empty) || newUser.Email == null)
+			return false;
+		if (Equals(newUser.Password, string.Empty) || newUser.Password == null)
+			return false;
+		if (Equals(newUser.Role, string.Empty) || newUser.Role == null)
+			newUser.Role = UserRoles.User;
+
 		_userRepository.AddUser(newUser);
+
+		return true;
 	}
 
 	public User GetUserById(Guid id)
 	{
+		if(id == Guid.Empty)
+			return null;
+
 		return _userRepository.GetUserById(id);
 	}
 }

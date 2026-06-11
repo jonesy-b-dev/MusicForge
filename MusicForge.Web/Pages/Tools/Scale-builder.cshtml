@@ -1,0 +1,152 @@
+﻿@page
+@using MusicForge.Domain.Models
+@model MusicForge.Web.Pages.ScaleBuilderModel
+@{
+}
+
+<head>
+	<link rel="stylesheet" href="~/css/chordToolPage.css">
+</head>
+<!-- Page Header -->
+<div class="page-header">
+	<h1 class="page-title">
+		<svg xmlns="http://www.w3.org/2000/svg" style="width: 2.5rem; height: 2.5rem;" fill="none" viewBox="0 0 24 24"
+			 stroke="currentColor">
+			<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+				  d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
+		</svg>
+		Scale<span class="page-title-accent">Builder</span>
+	</h1>
+	<p class="page-subtitle">
+		Explore and learn scales
+	</p>
+</div>
+<div class="chord-container">
+	<!-- Scale Builder Form -->
+	<div class="chord-builder-card">
+		<form method="post" class="chord-form">
+			<!-- Root Note Selection -->
+			<div class="form-group">
+				<label class="form-label">
+					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+							  d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14" />
+					</svg>
+					Root Note
+				</label>
+				<select asp-for="SelectedNote" class="form-select">
+					<option value="A">A</option>
+					<option value="As">A# / B♭</option>
+					<option value="B">B</option>
+					<option value="C">C</option>
+					<option value="Cs">C# / D♭</option>
+					<option value="D">D</option>
+					<option value="Ds">D# / E♭</option>
+					<option value="E">E</option>
+					<option value="F">F</option>
+					<option value="Fs">F# / G♭</option>
+					<option value="G">G</option>
+					<option value="Gs">G# / A♭</option>
+				</select>
+			</div>
+
+			<!-- Scale Type Selection -->
+			<div class="form-group">
+				<label class="form-label">
+					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+							  d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+					</svg>
+					Scale Type
+				</label>
+				<select asp-for="SelectedMode" class="form-select">
+					<optgroup label="Diatonic Modes">
+						<option value="Major">Major</option>
+						<option value="Minor">Minor</option>
+						<option value="Dorian">Dorian</option>
+						<option value="Phrygian">Phrygian</option>
+						<option value="Lydian">Lydian</option>
+						<option value="Mixolydian">Mixolydian</option>
+						<option value="Locrian">Locrian</option>
+					</optgroup>
+					<optgroup label="Pentatonic &amp; Blues">
+						<option value="MajorPentatonic">Major Pentatonic</option>
+						<option value="MinorPentatonic">Minor Pentatonic</option>
+						<option value="Blues">Blues</option>
+					</optgroup>
+					<optgroup label="Minor Variants">
+						<option value="HarmonicMinor">Harmonic Minor</option>
+						<option value="MelodicMinor">Melodic Minor</option>
+					</optgroup>
+					<optgroup label="Symmetric">
+						<option value="WholeTone">Whole Tone</option>
+						<option value="Diminished">Diminished</option>
+					</optgroup>
+				</select>
+			</div>
+
+			<!-- Submit Button -->
+			<button type="submit" class="submit-btn">
+				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+						  d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+						  d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+				</svg>
+				Generate Scale
+			</button>
+		</form>
+	</div>
+
+	<!-- Results Section -->
+	@if (Model.scale?.notes != null && Model.scale.notes.Any())
+	{
+		<div class="chord-results">
+			<div class="results-header">
+				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+						  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+				</svg>
+				<h3 class="results-title">Chord Notes</h3>
+			</div>
+
+			<div class="notes-grid">
+				@foreach (Note note in Model.scale.notes)
+				{
+					string result = note.ToString().Replace("s", "#");
+					<div class="note-card">
+						<div class="note-text">@result</div>
+						<div class="note-label">Note</div>
+					</div>
+				}
+			</div>
+		</div>
+	}
+	else
+	{
+		<div class="chord-results">
+			<div class="empty-state">
+				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+						  d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
+				</svg>
+				<p>Select a root note and chord type to generate your chord</p>
+			</div>
+		</div>
+	}
+
+	<!-- Info Card -->
+	<div class="info-card">
+		<div class="info-card-header">
+			<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+					  d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+			</svg>
+			<h4 class="info-card-title">Pro Tip</h4>
+		</div>
+		<p class="info-card-text">
+			Try experimenting with different chord types to discover new progressions. Major chords create uplifting
+			sounds,
+			while minor chords add depth and emotion. Extended chords like ninths add sophistication to your music.
+		</p>
+	</div>

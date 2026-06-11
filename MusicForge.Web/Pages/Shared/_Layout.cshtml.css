@@ -1,48 +1,131 @@
-﻿/* Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
-for details on configuring this project to bundle and minify static web assets. */
-
-a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
+﻿/* Navigation */
+.navbar {
+	background-color: #4A5D3E;
+	color: white;
+	padding: 1rem 1.5rem;
+	position: sticky;
+	top: 0;
+	z-index: 1000;
+	box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
 
-a {
-  color: #0077cc;
+.navbar-content {
+	max-width: 1280px;
+	width: 100%;
+	margin: 0 auto;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 }
 
-.btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+.navbar-brand {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	text-decoration: none;
+	color: white;
+	transition: opacity 0.3s ease;
 }
 
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+.navbar-brand:hover {
+	opacity: 0.8;
 }
 
-.border-top {
-  border-top: 1px solid #e5e5e5;
-}
-.border-bottom {
-  border-bottom: 1px solid #e5e5e5;
+.navbar-brand-text {
+	font-size: 1.25rem;
+	font-weight: bold;
 }
 
-.box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+.navbar-accent {
+	color: #F5B800;
 }
 
-button.accept-policy {
-  font-size: 1rem;
-  line-height: inherit;
+.navbar-menu {
+	display: flex;
+	align-items: center;
+	gap: 1.5rem;
 }
 
+.navbar-link {
+	color: white;
+	text-decoration: none;
+	transition: color 0.3s ease;
+}
+
+.navbar-link:hover {
+	color: #F5B800;
+}
+
+.navbar-link {
+	color: white;
+	text-decoration: none;
+	transition: color 0.3s ease;
+}
+
+/* Footer */
 .footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px;
+	background-color: #4A5D3E;
+	color: white;
+	padding: 3rem 1rem;
+}
+
+.footer-content {
+	max-width: 1280px;
+	margin: 0 auto;
+}
+
+.footer-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+	gap: 2rem;
+	margin-bottom: 3rem;
+}
+
+.footer-brand {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	margin-bottom: 1rem;
+	font-size: 1.25rem;
+	font-weight: bold;
+}
+
+.footer-brand .accent {
+	color: #F5B800;
+}
+
+.footer-description {
+	color: #d1d5db;
+}
+
+.footer-heading {
+	font-weight: bold;
+	margin-bottom: 1rem;
+	color: #F5B800;
+}
+
+.footer-links {
+	list-style: none;
+}
+
+.footer-links li {
+	margin-bottom: 0.5rem;
+}
+
+.footer-links a {
+	color: #d1d5db;
+	text-decoration: none;
+	transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+	color: #F5B800;
+}
+
+.footer-bottom {
+	margin-top: 3rem;
+	padding-top: 2rem;
+	border-top: 1px solid rgba(255, 255, 255, 0.1);
+	text-align: center;
+	color: #9ca3af;
 }

@@ -18,10 +18,7 @@ public class LoginModel : PageModel
 		_userService = userService;
 	}
 
-	public void OnGet()
-	{
-		UserLoginModel = new();
-	}
+	public void OnGet() {}
 
 	public async Task<IActionResult> OnPost()
 	{
@@ -34,13 +31,19 @@ public class LoginModel : PageModel
 			return Page();
 
 		User loggedInUser = _userService.GetUserById(userGuid);
+		if (loggedInUser == null)
+		{
+			return new RedirectToPageResult("/login");
+		}
 
-		List<Claim> claims = new();
-		claims.Add(new Claim(ClaimTypes.Email, loggedInUser.Email));
-		claims.Add(new Claim(ClaimTypes.Role, loggedInUser.Role));
+		List<Claim> claims =
+		[
+			new Claim(ClaimTypes.Role, loggedInUser.Role ?? throw new InvalidOperationException("Role is required")),
+			new Claim(ClaimTypes.NameIdentifier, userGuid.ToString())
+		];
 
 		ClaimsIdentity claimIdentity = new(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-		HttpContext.SignInAsync(new ClaimsPrincipal(claimIdentity));
+		await HttpContext.SignInAsync(new ClaimsPrincipal(claimIdentity));
 
 		return new RedirectToPageResult("/Account");
 	}

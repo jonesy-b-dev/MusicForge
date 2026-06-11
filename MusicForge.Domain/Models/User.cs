@@ -3,6 +3,7 @@ namespace MusicForge.Domain.Models
 	public class User
 	{
 		public User(
+				Guid id,
 				string firstName,
 				string lastName,
 				string email,
@@ -10,6 +11,7 @@ namespace MusicForge.Domain.Models
 				string role
 				)
 		{
+			Id = id;
 			FirstName = firstName;
 			LastName = lastName;
 			Email = email;
@@ -17,12 +19,13 @@ namespace MusicForge.Domain.Models
 			Role = role;
 		}
 
-		public User(){}
+		public User() { }
 
-		public string? FirstName { get; private set; }
-		public string? LastName { get;  private set; }
-		public string? Email { get;  private set; }
-		public string? Password { get;  private set; }
-		public string? Role { get;  private set; }
+		public Guid Id { get; }
+		public string? FirstName { get; }
+		public string? LastName { get; }
+		public string? Email { get; }
+		public string? Password { get; }
+		public string? Role { get; set; }
 	}
 }

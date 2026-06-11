@@ -1,0 +1,39 @@
+﻿@page
+@model MusicForge.Web.Pages.CreateArticle
+@{
+}
+<div class="loginContainer">
+<h3>Create Article</h3>
+@if (Model.ErrorMessage != null)
+{
+    <p style="color:red">@Model.ErrorMessage</p>
+}
+<hr>
+
+<form method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="Title">Title</label><br />
+        <input type="text" class="form-control" id="Title" name="Title" asp-for="Title" required />
+    </div>
+    <br />
+    <div class="form-group">
+        <label for="UploadedFile">Text File</label><br />
+        <input type="file" class="upload-button" id="UploadedFile" name="UploadedFile" accept=".txt,.csv,.log,.md" />
+    </div>
+    <br />
+	<div style="display: flex; gap: 0.5rem;justify-content: center;">
+		<button type="submit" class="btn btn-primary mt-2 mb-2">Upload</button>
+	</div>
+	@if (TempData["Success"] != null)
+	{
+		<div class="success">@TempData["Success"]</div>
+	}
+</form>
+</div>
+
+@if (Model.FileContents != null)
+{
+    <h3>Result</h3>
+    <p><strong>Title:</strong> @Model.Title</p>
+    <pre>@Model.FileContents</pre>
+}
