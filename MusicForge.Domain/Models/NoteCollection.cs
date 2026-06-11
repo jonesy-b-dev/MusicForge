@@ -4,8 +4,8 @@ namespace MusicForge.Domain.Models
 	{
 		public NoteCollection()
 		{
-			notes = [];
+			Notes = [];
 		}
-		public List<Note> notes;
+		public List<Note> Notes { get; set; }
 	}
 }
