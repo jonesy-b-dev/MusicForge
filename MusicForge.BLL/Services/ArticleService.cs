@@ -18,6 +18,11 @@ namespace MusicForge.BLL.Services
 		{
 			string dirPath = string.Empty;
 			string filePath = string.Empty;
+
+			if (Path.GetExtension(fileName) != ".txt" || Path.GetExtension(fileName) != ".md")
+			{
+				return false;
+			}
 			try
 			{
 				dirPath = Path.Combine(_webRootPath, "articles");
