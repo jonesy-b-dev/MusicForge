@@ -62,24 +62,6 @@
 	transition: color 0.3s ease;
 }
 
-.btn-login {
-	display: inline-flex;
-	align-items: center;
-	gap: 0.5rem;
-	padding: 0.5rem 1rem;
-	background-color: #F5B800;
-	color: #4A5D3E;
-	border: none;
-	border-radius: 0.5rem;
-	font-weight: 500;
-	cursor: pointer;
-	transition: background-color 0.3s ease;
-}
-
-.btn-login:hover {
-	background-color: #e5a800;
-}
-
 /* Footer */
 .footer {
 	background-color: #4A5D3E;

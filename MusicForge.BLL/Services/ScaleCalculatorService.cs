@@ -28,7 +28,7 @@ namespace MusicForge.BLL.Services
 			};
 
 			foreach (int interval in intervals)
-				scale.notes.Add(NoteCalculatorHelper.Offset(note, interval));
+				scale.Notes.Add(NoteCalculatorHelper.Offset(note, interval));
 
 			return scale;
 		}

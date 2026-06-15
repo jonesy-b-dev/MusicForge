@@ -25,7 +25,7 @@ namespace MusicForge.Domain.Models
 		public string? FirstName { get; }
 		public string? LastName { get; }
 		public string? Email { get; }
-		public string? Password { get; }
+		public string? Password { get; set; }
 		public string? Role { get; set; }
 	}
 }

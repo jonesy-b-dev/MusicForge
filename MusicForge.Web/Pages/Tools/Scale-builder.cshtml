@@ -99,7 +99,7 @@
 	</div>
 
 	<!-- Results Section -->
-	@if (Model.scale?.notes != null && Model.scale.notes.Any())
+	@if (Model.scale?.Notes != null && Model.scale.Notes.Any())
 	{
 		<div class="chord-results">
 			<div class="results-header">
@@ -111,7 +111,7 @@
 			</div>
 
 			<div class="notes-grid">
-				@foreach (Note note in Model.scale.notes)
+				@foreach (Note note in Model.scale.Notes)
 				{
 					string result = note.ToString().Replace("s", "#");
 					<div class="note-card">

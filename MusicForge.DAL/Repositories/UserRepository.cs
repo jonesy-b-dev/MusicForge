@@ -1,4 +1,6 @@
 using System.Data;
+using Microsoft.AspNetCore.Cryptography.KeyDerivation;
+using System.Security.Cryptography;
 using Microsoft.Data.SqlClient;
 using MusicForge.Domain.Interfaces;
 using MusicForge.Domain.Models;
@@ -54,27 +56,31 @@ public class UserRepository : IUserRepository
 		{
 			using (SqlConnection connection = new(_connectionString))
 			{
-				query = "SELECT Id,Email,Password FROM Users WHERE Email=@Email AND Password = @Password;";
+				query = "SELECT Id, Password FROM Users WHERE Email = @Email;";
+
 				SqlCommand command = new(query, connection);
+
 				command.Parameters.AddWithValue("@Email", email);
-				command.Parameters.AddWithValue("@Password", password);
 
 				connection.Open();
 				SqlDataReader reader = command.ExecuteReader();
 
-				Guid userGuid = Guid.Empty;
-
-				while (reader.Read())
+				if (reader.Read())
 				{
-					userGuid = (Guid)reader["Id"];
+					string storedHash = reader["Password"].ToString()!;
+					Guid userId = (Guid)reader["Id"];
+
+					// Verify the password against the stored salt:hash
+					if (VerifyPassword(password, storedHash))
+						return userId;
 				}
 
-				return userGuid;
+				return Guid.Empty;
 			}
 		}
 		catch (Exception e)
 		{
-			Console.WriteLine($"Failed to validate user.\n Query: {query}, Exeption: {e}");
+			Console.WriteLine($"Failed to validate user.\n Query: {query}, Exception: {e}");
 			return Guid.Empty;
 		}
 	}
@@ -113,6 +119,23 @@ public class UserRepository : IUserRepository
 			Console.WriteLine($"Failed to Insert.\n Query: {query}, Student: {resultUser}, Exeption: {e}");
 			return null;
 		}
+	}
+	private bool VerifyPassword(string password, string storedHash)
+	{
+		// Split out the salt and hash
+		string[] parts = storedHash.Split(':');
+		if (parts.Length != 2)
+			return false;
 
+		byte[] salt = Convert.FromBase64String(parts[0]);
+
+		string hash = Convert.ToBase64String(KeyDerivation.Pbkdf2(
+			password: password,
+			salt: salt,
+			prf: KeyDerivationPrf.HMACSHA256,
+			iterationCount: 100000,
+			numBytesRequested: 256 / 8));
+
+		return hash == parts[1];
 	}
 }

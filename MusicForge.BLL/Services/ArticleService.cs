@@ -1,4 +1,3 @@
-using System.Security.Claims;
 using MusicForge.Domain.Interfaces;
 using MusicForge.Domain.Models;
 
@@ -19,22 +18,27 @@ namespace MusicForge.BLL.Services
 		{
 			string dirPath = string.Empty;
 			string filePath = string.Empty;
+
+			if (Path.GetExtension(fileName) != ".txt" || Path.GetExtension(fileName) != ".md")
+			{
+				return false;
+			}
 			try
 			{
 				dirPath = Path.Combine(_webRootPath, "articles");
 				Directory.CreateDirectory(dirPath);
 
-				string dateFormat = "dd-MM-yyyy_HH-mm-ss";
-				string date =  DateTime.Now.ToString(dateFormat);
+				const string dateFormat = "dd-MM-yyyy_HH-mm-ss";
+				string date = DateTime.Now.ToString(dateFormat);
 
 				filePath = Path.Combine(dirPath, title + "_" + date + Path.GetExtension(fileName));
 
-				using (FileStream fs = new FileStream(filePath, FileMode.Create))
+				using (FileStream fs = new(filePath, FileMode.Create))
 				{
 					fileStream.CopyTo(fs);
 				}
 
-				Article uploadedArticle = new Article(Guid.NewGuid(), userId, title, filePath, 0, DateTime.ParseExact(date, dateFormat, System.Globalization.CultureInfo.InvariantCulture));
+				Article uploadedArticle = new(Guid.NewGuid(), userId, title, filePath, 0, DateTime.ParseExact(date, dateFormat, System.Globalization.CultureInfo.InvariantCulture));
 
 				_articleRepository.AddArticle(uploadedArticle);
 				return true;
