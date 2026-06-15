@@ -34,7 +34,7 @@ public class UserRepository : IUserRepository
 				command.Parameters.AddWithValue("@FirstName", newUser.FirstName);
 				command.Parameters.AddWithValue("@LastName", newUser.LastName);
 				command.Parameters.AddWithValue("@Email", newUser.Email);
-				command.Parameters.AddWithValue("@Password", HashPassword(newUser.Password));
+				command.Parameters.AddWithValue("@Password", newUser.Password);
 				command.Parameters.AddWithValue("@Role", newUser.Role);
 				command.Parameters.AddWithValue("@Id", Guid.NewGuid());
 
@@ -119,22 +119,6 @@ public class UserRepository : IUserRepository
 			Console.WriteLine($"Failed to Insert.\n Query: {query}, Student: {resultUser}, Exeption: {e}");
 			return null;
 		}
-
-	}
-
-	private string HashPassword(string unhashedPassword)
-	{
-		byte[] salt = RandomNumberGenerator.GetBytes(128 / 8);
-
-		// derive a 256-bit subkey (use HMACSHA256 with 100,000 iterations)
-		string hash = Convert.ToBase64String(KeyDerivation.Pbkdf2(
-			password: unhashedPassword,
-			salt: salt,
-			prf: KeyDerivationPrf.HMACSHA256,
-			iterationCount: 100000,
-			numBytesRequested: 256 / 8));
-
-		return $"{Convert.ToBase64String(salt)}:{hash}";
 	}
 	private bool VerifyPassword(string password, string storedHash)
 	{

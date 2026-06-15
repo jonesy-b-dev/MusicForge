@@ -3,6 +3,9 @@
 		<ProjectReference Include="..\MusicForge.DAL\MusicForge.DAL.csproj" />
 		<ProjectReference Include="..\MusicForge.Domain\MusicForge.Domain.csproj" />
 	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Cryptography.KeyDerivation" Version="9.0.0" />
+	</ItemGroup>
 
 	<PropertyGroup>
 		<TargetFramework>net10.0</TargetFramework>
