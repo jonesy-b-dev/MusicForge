@@ -111,13 +111,24 @@
 			</div>
 
 			<div class="notes-grid">
-				@foreach (Note note in Model.scale.Notes)
+				@for (int i = 0; i < Model.scale.Notes.Count(); i++)
 				{
-					string result = note.ToString().Replace("s", "#");
+					string result = Model.scale.Notes[i].ToString().Replace("s", "#");
 					<div class="note-card">
 						<div class="note-text">@result</div>
-						<div class="note-label">Note</div>
+						@if (i == 0)
+						{
+							<div class="note-label">+0</div>
+						}
+						else
+						{
+							int currentNote = (int)Model.scale.Notes[i];
+							int previousNote = (int)Model.scale.Notes[i - 1];
+							int interval = ((currentNote - previousNote) + 12) % 12;
+							<div class="note-label">+@interval</div>
+						}
 					</div>
+
 				}
 			</div>
 		</div>
@@ -146,6 +157,7 @@
 		</div>
 		<p class="info-card-text">
 			Try experimenting with different scale types to discover new feelings in the scales. Different type of
-			sclales give different vibes to you progressions and melodies. Try out something new and see how it feels!
+			sclales give different vibes to you progressions and melodies. Try out something new and see how it
+			feels!
 		</p>
 	</div>
