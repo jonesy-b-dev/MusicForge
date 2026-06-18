@@ -13,8 +13,10 @@ namespace MusicForge.Testing.Tests
 			NoteCollection expectedResult = new([Note.C, Note.E, Note.G]);
 			ChordCalculatorService _chordCalculatorService = new();
 
+			// Act
 			NoteCollection result = _chordCalculatorService.CalculateChord(Note.C, ChordMode.MajorTriad);
 
+			// Assert
 			Assert.Equal(expectedResult.Notes, result.Notes);
 		}
 	}

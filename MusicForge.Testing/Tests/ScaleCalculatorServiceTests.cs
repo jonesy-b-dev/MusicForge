@@ -13,8 +13,10 @@ namespace MusicForge.Testing.Tests
 			NoteCollection expectedResult = new([Note.C, Note.D, Note.E, Note.F, Note.G, Note.A, Note.B]);
 			ScaleCalculatorService _scaleCalculatorService = new();
 
+			//Act
 			NoteCollection result = _scaleCalculatorService.CalculateScale(Note.C, ScaleMode.Major);
 
+			// Assert
 			Assert.Equal(expectedResult.Notes, result.Notes);
 		}
 	}
