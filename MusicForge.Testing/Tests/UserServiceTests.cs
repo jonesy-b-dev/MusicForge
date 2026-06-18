@@ -3,7 +3,7 @@ using MusicForge.BLL.Services;
 using MusicForge.Domain.Interfaces;
 using MusicForge.Domain.Models;
 
-namespace MusicForge.Testing;
+namespace MusicForge.Testing.Tests;
 
 public class UserServiceTests
 {
