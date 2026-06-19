@@ -110,14 +110,26 @@
 			</div>
 
 			<div class="notes-grid">
-				@foreach (Note note in Model.chord.Notes)
-				{
-					string result = note.ToString().Replace("s", "#");
-					<div class="note-card">
-						<div class="note-text">@result</div>
-						<div class="note-label">Note</div>
-					</div>
-				}
+				<div class="notes-grid">
+					@for (int i = 0; i < Model.chord.Notes.Count(); i++)
+					{
+						string result = Model.chord.Notes[i].ToString().Replace("s", "#");
+						<div class="note-card">
+							<div class="note-text">@result</div>
+							@if (i == 0)
+							{
+								<div class="note-label">+0</div>
+							}
+							else
+							{
+								int currentNote = (int)Model.chord.Notes[i];
+								int previousNote = (int)Model.chord.Notes[i - 1];
+								int interval = ((currentNote - previousNote) + 12) % 12;
+								<div class="note-label">+@interval</div>
+							}
+						</div>
+					}
+				</div>
 			</div>
 		</div>
 	}

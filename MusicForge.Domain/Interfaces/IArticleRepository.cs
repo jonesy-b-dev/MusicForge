@@ -2,9 +2,10 @@ using MusicForge.Domain.Models;
 
 namespace MusicForge.Domain.Interfaces
 {
-    public interface IArticleRepository
-    {
+	public interface IArticleRepository
+	{
 		public void AddArticle(Article article);
 		public List<Article> GetAllArticles();
-    }
+		public List<Article> GetAllArticlesFromWriter(Guid userId);
+	}
 }

@@ -77,5 +77,43 @@ namespace MusicForge.DAL.Repositories
 			}
 			return articles;
 		}
+		public List<Article> GetAllArticlesFromWriter(Guid userId)
+		{
+			string query = "";
+			List<Article> articles = [];
+			try
+			{
+				using (SqlConnection connection = new(_connectionString))
+				{
+					query = "SELECT * FROM Articles WHERE user_id = @User_Id;";
+					SqlCommand command = new(query, connection);
+
+					command.Parameters.AddWithValue("@User_Id", userId);
+
+					connection.Open();
+					using (SqlDataReader reader = command.ExecuteReader())
+					{
+						while (reader.Read())
+						{
+							articles.Add(new Article(
+									(Guid)reader["id"],
+									(Guid)reader["user_id"],
+									(string)reader["title"],
+									(string)reader["filePath"],
+									(int)reader["upvotes"],
+									(DateTime)reader["created_at"]
+								)
+							);
+						}
+					}
+				}
+			}
+			catch (Exception e)
+			{
+				Console.WriteLine($"Failed to Retrieve.\n Query: {query}\n Exception: {e}");
+				return new();
+			}
+			return articles;
+		}
 	}
 }

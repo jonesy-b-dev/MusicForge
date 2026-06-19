@@ -18,7 +18,7 @@ public class LoginModel : PageModel
 		_userService = userService;
 	}
 
-	public void OnGet() {}
+	public void OnGet() { }
 
 	public async Task<IActionResult> OnPost()
 	{
@@ -27,13 +27,17 @@ public class LoginModel : PageModel
 
 		Guid userGuid = _userService.TryLoginUser(UserLoginModel.Email, UserLoginModel.Password);
 
-		if(userGuid == Guid.Empty)
+		if (userGuid == Guid.Empty)
+		{
+			TempData["Failed"] = "Password or email is incorrect";
 			return Page();
+		}
 
 		User loggedInUser = _userService.GetUserById(userGuid);
 		if (loggedInUser == null)
 		{
-			return new RedirectToPageResult("/login");
+			TempData["Failed"] = "Failed to fetch userdata please try again";
+			return RedirectToPage();
 		}
 
 		List<Claim> claims =

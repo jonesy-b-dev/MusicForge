@@ -19,7 +19,7 @@ namespace MusicForge.BLL.Services
 			string dirPath = string.Empty;
 			string filePath = string.Empty;
 
-			if (Path.GetExtension(fileName) != ".txt" || Path.GetExtension(fileName) != ".md")
+			if (Path.GetExtension(fileName) != ".txt" && Path.GetExtension(fileName) != ".md")
 			{
 				return false;
 			}
@@ -53,6 +53,11 @@ namespace MusicForge.BLL.Services
 		public List<Article> GetAllArticles()
 		{
 			return _articleRepository.GetAllArticles();
+		}
+
+		public List<Article> GetAllArticlesFromWriter(Guid userId)
+		{
+			return _articleRepository.GetAllArticlesFromWriter(userId);
 		}
 	}
 }
